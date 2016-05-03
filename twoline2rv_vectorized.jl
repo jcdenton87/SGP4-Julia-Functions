@@ -54,7 +54,7 @@
 #  ----------------------------------------------------------------------------
 """
 
-function twoline2rv(whichconst, longstr1, longstr2, typerun,typeinput)
+function twoline2rv_vectorized(whichconst, longstr1, longstr2, typerun,typeinput)
     global tumin, radiusearthkm, xke, j2, j3, j4, j3oj2
 
     xpdotp   =  1440.0 / (2.0*pi);   # 229.1831180523293;  # [rev/day]/[rad/min]
@@ -62,8 +62,8 @@ function twoline2rv(whichconst, longstr1, longstr2, typerun,typeinput)
     revnum = 0;
     elnum  = 0;
     year   = 0;
-    sat=SGP4.satrec(0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,#first fifteen elements
-      0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,[],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+    sat=SGP4.satrec(0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+      0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,[],0.0,0.0,0.0,0.0,0.0,0.0,0.0,
       0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
       0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
       0.0,0.0,0.0,0.0,0.0,0.0,0.0,0); #default values initialization for satrec...
@@ -254,7 +254,7 @@ end
 
 #     // ------------- initialize the orbit at sgp4epoch --------------
      sgp4epoch = sat.jdsatepoch - 2433281.5; # days since 0 Jan 1950
-     sat = SGP4.sgp4init(whichconst, sat, sat.bstar, sat.ecco, sgp4epoch, sat.argpo, sat.inclo, sat.mo, sat.no, sat.nodeo);
+     sat = SGP4.sgp4init_vectorized(whichconst, sat, sat.bstar, sat.ecco, sgp4epoch, sat.argpo, sat.inclo, sat.mo, sat.no, sat.nodeo);
 
 return sat, startmfe, stopmfe, deltamin,longstr1,longstr2
 

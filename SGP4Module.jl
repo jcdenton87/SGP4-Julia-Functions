@@ -32,5 +32,7 @@ include("sgp4.jl")
 include("angl.jl")
 include("twoline2rv.jl")
 include("tleformat.jl")
-
+include("sgp4init_vectorized.jl")
+include("sgp4_vectorized.jl")
+include("twoline2rv_vectorized.jl")
 end

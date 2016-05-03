@@ -151,7 +151,7 @@ function sgp4(satrec,tsince);
    nm    = satrec.no;
    em    = satrec.ecco;
    inclm = satrec.inclo;
-   if (satrec.method == 'd')
+   if (satrec.method == "d")
        tc = satrec.t;
        satrec.atime,em,argpm,inclm,satrec.xli,mm,
            satrec.xni,nodem,dndt,nm = dspace(
@@ -205,7 +205,7 @@ function sgp4(satrec,tsince);
    mp     = mm;
    sinip  = sinim;
    cosip  = cosim;
-   if (satrec.method == 'd')
+   if (satrec.method == "d")
        ep,xincp,nodep,argpp,mp = dpper(
            satrec.e3,satrec.ee2,satrec.peo,
            satrec.pgho,satrec.pho,satrec.pinco,
@@ -231,7 +231,7 @@ function sgp4(satrec,tsince);
    end # // if method = d
 
    # /* -------------------- long period periodics ------------------ */
-   if (satrec.method == 'd')
+   if (satrec.method == "d")
        sinip =  sin(xincp);
        cosip =  cos(xincp);
        satrec.aycof = -0.5*j3oj2*sinip;
@@ -264,7 +264,7 @@ function sgp4(satrec,tsince);
        coseo1 = cos(eo1);
        tem5   = 1.0 - coseo1 * axnl - sineo1 * aynl;
        tem5   = (u - aynl * coseo1 + axnl * sineo1 - eo1) / tem5;
-       if(abs(tem5) >= 0.95)
+       if (abs(tem5) >= 0.95)
            if tem5 > 0.0
                tem5 = 0.95;
            else

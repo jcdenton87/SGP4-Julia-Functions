@@ -17,7 +17,8 @@ mu = 3.986004418000000e+05;
 p,a,ecc,incl,omega,argp,nu,m,arglat,truelon,lonper = SGP4.rv2coe(r,v, mu);
 output1[div(ii,360)+1,1:20]=[ii,r[1],r[2],r[3],v[1],v[2],v[3],a, ecc, rad2deg(incl),rad2deg(omega),rad2deg(argp),rad2deg(nu),rad2deg(m), year,month,day,hour,minute,sec]'
 end
-
+sat1, startmfe, stopmfe, deltamin,longstr1,longstr2=SGP4.twoline2rv(72,longstr1,longstr2,"v","e");
+sat1, r1, v1 = SGP4.sgp4_vectorized(sat1,collect(0:360:4320));
 
 tic()
 #Verification Test Case #2

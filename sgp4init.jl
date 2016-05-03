@@ -90,7 +90,7 @@ function sgp4init(whichconst, satrc, xbstar, xecco, epoch,
 
    # /* ------------------------ initialization --------------------- */
    # /* ----------- set all near earth variables to zero ------------ */
-   satrc.isimp   = 0;   satrc.method = 'n'; satrc.aycof    = 0.0;
+   satrc.isimp   = 0;   satrc.method = "n"; satrc.aycof    = 0.0;
    satrc.con41   = 0.0; satrc.cc1    = 0.0; satrc.cc4      = 0.0;
    satrc.cc5     = 0.0; satrc.d2     = 0.0; satrc.d3       = 0.0;
    satrc.d4      = 0.0; satrc.delmo  = 0.0; satrc.eta      = 0.0;
@@ -136,7 +136,7 @@ function sgp4init(whichconst, satrc, xbstar, xecco, epoch,
    #     /* -------------------- wgs-72 earth constants ----------------- */
    #     // sgp4fix identify constants and allow alternate values
    global tumin, mu, radiusearthkm, xke, j2, j3, j4, j3oj2
-   (tumin, mu, radiusearthkm, xke, j2, j3, j4, j3oj2) = getgravc( whichconst );
+   tumin, mu, radiusearthkm, xke, j2, j3, j4, j3oj2 = getgravc( whichconst );
 
    ss     = 78.0 / radiusearthkm + 1.0;
    qzms2t = ((120.0 - 78.0) / radiusearthkm)^4;
@@ -146,7 +146,7 @@ function sgp4init(whichconst, satrc, xbstar, xecco, epoch,
    # 1.5 e-12, so the threshold was changed to 1.5e-12 for consistancy
    temp4    =   1.5e-12;
 
-   satrc.init = 'y';
+   satrc.init = "y";
    satrc.t    = 0.0;
 
    (ainv,  ao,     satrc.con41,   con42,  cosio,  cosio2, einv,   eccsq,
@@ -314,7 +314,7 @@ function sgp4init(whichconst, satrc, xbstar, xecco, epoch,
        (satrc, r, v) = sgp4(satrc, 0.0);
    #end
 
-   satrc.init = 'n';
+   satrc.init = "n";
 
    return satrc
 
